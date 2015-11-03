@@ -9,6 +9,11 @@ var getElementsByClassName = function(className) {
   var elementsArr = [];
 
   var traverser = function(node) {
+  	// base case/termination condition
+  	if (node.length === 0) {
+  		return;
+  	}
+
   	// NOTE: node.classList.contains(className) returns a Boolean 
   	if (node.classList !== undefined && node.classList.contains(className)) {
   		// if classList of current node DOES have the specified className, push node into elementsArr
@@ -27,7 +32,8 @@ var getElementsByClassName = function(className) {
   // begin recursion by starting at body 
   traverser(document.body);
 
-  // console.log(elementsArr + 'works!');
+  console.log(elementsArr + 'works!');
+  // base case
   return elementsArr;
 
 };
