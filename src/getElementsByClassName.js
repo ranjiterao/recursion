@@ -33,7 +33,7 @@ var getElementsByClassName = function(className) {
   traverser(document.body);
 
   console.log(elementsArr + 'works!');
-  // base case
+  
   return elementsArr;
 
 };
