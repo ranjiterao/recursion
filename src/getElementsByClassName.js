@@ -4,7 +4,30 @@
 // };
 
 // But instead we're going to implement it from scratch:
-var getElementsByClassName = function(className
-){
-  // your code here
+var getElementsByClassName = function(className) {
+  
+  var elementsArr = [];
+
+  var traverser = function(node) {
+  	// NOTE: node.classList.contains(className) returns a Boolean 
+  	if (node.classList !== undefined && node.classList.contains(className)) {
+  		// if classList of current node DOES have the specified className, push node into elementsArr
+  		elementsArr.push(node);
+  	}
+
+  	// loop through the node.children collection, which contains the children of selected node 
+  	// http://stackoverflow.com/questions/17094230/how-do-i-loop-through-children-objects-in-javascript
+  	for (var i = 0; i < node.children.length; i++) {
+  		// recursive case  
+  		traverser(node.children[i]);
+  	}
+
+  };
+
+  // begin recursion by starting at body 
+  traverser(document.body);
+
+  // console.log(elementsArr + 'works!');
+  return elementsArr;
+
 };
